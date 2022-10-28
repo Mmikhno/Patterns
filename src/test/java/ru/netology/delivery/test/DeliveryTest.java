@@ -36,7 +36,6 @@ class DeliveryTest {
         $$("[data-test-id='agreement']").first().click();
         $$("button").find(exactText("Запланировать")).click();
         SelenideElement notification = $("[data-test-id='success-notification']");
-        notification.shouldBe(visible, Duration.ofMillis(15000));
         notification.$(".notification__title").shouldHave(exactText("Успешно!"));
         notification.$(".notification__content").shouldHave(exactText("Встреча успешно запланирована на " + firstMeetingDate));
         dateInput.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
@@ -64,7 +63,7 @@ class DeliveryTest {
         $("[data-test-id='name'] input").setValue(validUser.getName());
         SelenideElement dateInput = $("[data-test-id='date'] input");
         dateInput.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        dateInput.setValue(firstMeetingDate);//дата, установленная для первой встречи
+        dateInput.setValue(firstMeetingDate);
         $("[data-test-id='phone'] input").setValue(validUser.getPhone());
         $$("[data-test-id='agreement']").first().click();
         $$("button").find(exactText("Запланировать")).click();
