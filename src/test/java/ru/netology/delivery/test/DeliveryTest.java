@@ -1,9 +1,10 @@
 package ru.netology.delivery.test;
 
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 import ru.netology.delivery.data.DataGenerator;
 
@@ -19,6 +20,14 @@ class DeliveryTest {
         open("http://localhost:9999");
     }
 
+     @BeforeAll
+    static void setupAll(){
+        SelenideLogger.addListener("allure",new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDown(){
+        SelenideLogger.removeListener("allure");
+    }
     @Test
     @DisplayName("Should successful plan and replan meeting")
     void shouldSuccessfulPlanAndReplanMeeting() {
