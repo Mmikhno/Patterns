@@ -3,6 +3,7 @@ package ru.netology.delivery.test;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
@@ -29,7 +30,7 @@ class DeliveryTest {
         SelenideLogger.removeListener("allure");
     }
     @Test
-    @DisplayName("Should successful plan and replan meeting")
+    @Description(value = "Should successful plan and replan meeting")
     void shouldSuccessfulPlanAndReplanMeeting() {
         var validUser = DataGenerator.Registration.generateUser("ru");
         var daysToAddForFirstMeeting = 4;
@@ -60,6 +61,7 @@ class DeliveryTest {
     }
 
     @Test
+    @Description(value="Replan meeting when city is changed")
     void shouldSuccessfulPlanMeetingWhenCityChanged() {
         //изменить город вместе с датой
         var validUser = DataGenerator.Registration.generateUser("ru");
@@ -90,6 +92,7 @@ class DeliveryTest {
     }
 
     @Test
+    @Description(value="Replan meeting when name is changed")
     void shouldSuccessfulPlanMeetingWhenNameChanged() {
         var validUser = DataGenerator.Registration.generateUser("ru");
         var daysToAddForFirstMeeting = 4;
@@ -121,6 +124,7 @@ class DeliveryTest {
     }
 
     @Test
+    @Description(value="Replan meeting when phone is changed")
     void shouldSuccessfulPlanMeetingWhenPhoneChanged() {
         var validUser = DataGenerator.Registration.generateUser("ru");
         var daysToAddForFirstMeeting = 4;
